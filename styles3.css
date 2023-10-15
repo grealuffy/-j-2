@@ -1,0 +1,41 @@
+.box{
+    background-image: url('./图（5）.jpg'); /*背景图片*/
+    background-repeat: no-repeat; /*背景图片不重复*/
+    background-size: 100% auto; /*背景图片大小*/
+    background-position: 0px -400px; /*背景图片居中*/
+    width: 100vw; 
+    height: 95vh; 
+    }    /* 类选择器   */
+.box1
+{
+    font-family: cursive ;/*字体*/
+    font-style: oblique; /*字体样式*/
+    width: 1024px;       /*窗口宽度*/
+    height: 700px;     /*窗口高度*/
+    margin: auto;    /*居中*/
+    top: 0;    /*居中*/
+    
+    bottom: 0;  /*居中*/
+    border: px solid red;  /*边框粗细和线条颜色*/
+    padding: auto;  /*内边距*/
+    text-align:left;    /*文字居中*/
+    line-height: 50px;   /*行高*/
+    font-size: 50px;    /*字体大小*/
+}
+#rectangleWindow {
+    display: table;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 150px;
+    background-color: white;
+    border: 1px solid black;
+    padding: 10px;
+  }
+  
+  #generateWindowButton {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }

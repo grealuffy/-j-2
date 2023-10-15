@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开始界面</title>
+    <link rel="stylesheet" href="styles3.css">
+    <style>
+        .zoom {
+                animation: zoom-animation 0.7s alternate infinite;
+                border-radius:22%; /* 将边框半径设置为50%以创建圆角 */
+                }
+                @keyframes zoom-animation {
+                0% {
+                    transform: scale(1);
+                }
+                100% {
+                    transform: scale(1.07);
+                }
+                }
+                /* .container {
+  position:fixed ;
+  width: 200px;
+  height: 200px;
+}
+
+.window {
+  display: none;
+  position: absolute;
+  top: 175%;
+  left: 365%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: 120%;
+  background-image: linear-gradient(to right, #f7eeee, #297ea8);
+  padding: 20px;
+  text-align: center;
+} */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* 半透明背景 */
+}
+
+.popup {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 250px;
+  height: 250px;
+  background-color: #fff;
+  padding: 20px;
+  text-align: center;
+  background-image: linear-gradient(to right, #f7eeee, #297ea8);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* 阴影效果 */
+}
+
+.button {
+  display: inline-block;
+  background-color: #ccc;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.link {
+  color: #000;
+  text-decoration: none;
+}
+
+    </style>
+</head>
+<body class="box">
+  <audio id="audio1">
+    <source src="./洛克王国-人鱼湾.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="audio2">
+    <source src="./洛克王国2_爱给网_aigei_com.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="audio3">
+    <source src="./洛克王国3_爱给网_aigei_com.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="audio4">
+    <source src="./洛克王国配乐 - 我的家园_爱给网_aigei_com (1).mp3" type="audio/mpeg">
+  </audio>
+  <audio id="audio5">
+    <source src="./任务4_爱给网_aigei_com.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="audio6">
+    <source src="./漂浮宫殿_爱给网_aigei_com.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="audio7">
+    <source src="./帝达尔之环中区、帝达尔之环东区、许愿台，圣湖_爱给网_aigei_com.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="audio8">
+    <source src="./星之所在_爱给网_aigei_com (1).mp3" type="audio/mpeg">
+  </audio>
+  <audio id="audio9">
+    <source src="./星之所在_爱给网_aigei_com.mp3" type="audio/mpeg">
+  </audio>
+    <img src="./4.gif" alt="图片不存在" width=300 height=266 style="position: absolute; top: 400px; left: 1080px;">
+    <img src="./5.gif" alt="图片不存在" width=300 height=266 style="position: absolute; top: 400px; left: 120px;">
+    <img src="./图 (1).jpg" onclick="togglePopup()" class="zoom" alt="图片不存在" width=220 height=67 style="position: absolute; top: 540px; left: 640px;cursor: pointer;">
+    <a href="./页面1.html"><img src="./图 (2).jpg"  class="zoom" alt="图片不存在" width=220 height=67 style="position: absolute; top: 610px; left: 640px;"></a>
+    <div class="overlay" id="overlay">
+        <div class="popup">
+          <h2>请选择游戏模式</h2>
+          <a href="./页面4.html"><button class="button">简单模式</button></a>
+          <br><br>
+          <a href="./页面5.html"><button class="button">困难模式</button></a>
+          <br><br>
+          <button class="button" onclick="closePopup()">关闭</button>
+        </div>
+      </div>
+      <script>
+        var audioElements = [document.getElementById("audio1"), document.getElementById("audio2"),document.getElementById("audio3"),document.getElementById("audio4"),document.getElementById("audio5"),document.getElementById("audio6"),document.getElementById("audio7"),document.getElementById("audio8"),document.getElementById("audio9")];
+        var currentAudioIndex = 0;
+        // alert(audioElements.length)
+        function playNextAudio() {
+          
+            currentAudioIndex = (currentAudioIndex + 1) % audioElements.length;
+            audioElements[currentAudioIndex].play();
+            audioElements[currentAudioIndex].addEventListener("ended", playNextAudio);
+        }
+      audioElements[currentAudioIndex].addEventListener("ended", playNextAudio);
+      audioElements[currentAudioIndex].play();
+        var imageElement = document.querySelector('.zoom');
+        // JavaScript响应按钮点击事件
+        function togglePopup() {
+          var overlay = document.getElementById("overlay");
+          overlay.style.display = "block";
+        }
+        function closePopup() {
+          var overlay = document.getElementById("overlay");
+          overlay.style.display = "none";
+        }
+      </script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>随机生成数独游戏</title>
+    <style>
+        /* 样式表格的类 */
+        .sudoku-table {
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+
+        /* 样式表格的单元格 */
+        .sudoku-table td {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #000;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        /* 添加样式以突出显示挖空单元格 */
+        .empty-cell {
+            background-color: #FFFACD;
+        }
+    </style>
+</head>
+<body>
+    <button id="generateBtn">生成数独</button>
+    <div id="sudokuContainer"></div>
+
+    <script>
+        const generateBtn = document.getElementById('generateBtn');
+        const sudokuContainer = document.getElementById('sudokuContainer');
+
+        generateBtn.addEventListener('click', function() {
+            // 移除之前生成的数独表格（如果有）
+            while (sudokuContainer.firstChild) {
+                sudokuContainer.removeChild(sudokuContainer.firstChild);
+            }
+
+            // 生成数独表格
+            const table = document.createElement('table');
+            table.classList.add('sudoku-table');
+
+            // 生成随机的数独数据
+            const sudokuData = generateRandomSudoku();
+
+            // 填充数独数据到表格
+            for (let i = 0; i < 9; i++) {
+                const row = table.insertRow();
+                for (let j = 0; j < 9; j++) {
+                    const cell = row.insertCell();
+                    const inputValue = sudokuData[i][j] !== 0 ? sudokuData[i][j] : '';
+                    if (Math.random() < 0.5) {
+                        cell.classList.add('empty-cell');
+                        const input = document.createElement('input');
+                        input.type = 'text';
+                        input.maxLength = '1';
+                        input.value = inputValue;
+                        cell.appendChild(input);
+                    } else {
+                        cell.textContent = inputValue;
+                    }
+                }
+            }
+
+            // 将生成的数独表格插入到目标容器中
+            sudokuContainer.appendChild(table);
+        });
+         // 生成随机的数独数据的函数
+         function generateRandomSudoku() {
+            // 此处可编写生成随机数独数据的算法
+            // 为简单起见，这里提供一个随机生成的示例
+            const sudokuData = [];
+            for (let i = 0; i < 9; i++) {
+                const row = [];
+                for (let j = 0; j < 9; j++) {
+                    const randomValue = Math.floor(Math.random() * 9) + 1;
+                    row.push(randomValue);
+                }
+                sudokuData.push(row);
+            }
+            return sudokuData;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+.box{
+    width: 100vw;
+    height: 95vh;
+    }    /* 类选择器   */
+#background-image-element
+{
+  background-image: url('./图（6）.jpg'); /*背景图片*/
+    background-repeat: no-repeat; /*背景图片不重复*/
+    background-size: 100% auto; 
+    background-position: 0px -100px; /*背景图片居中*/
+    width:100vw;
+    height: 96.7vh;
+}
+    .button1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white; /* 设置文本颜色为白色 */
+        padding: 10px 20px; /* 设置按钮内边距以增加按钮的大小 */
+        border-radius: 50%; /* 设置按钮的圆角 */
+        cursor: pointer; /* 将鼠标光标样式设置为手型，表明这是一个可点击的按钮 */
+        background-image: linear-gradient(to right, #007bff, #ff0062); /* 设置渐变色背景，可根据需求自定义渐变方向和颜色 */
+      }
+      .button2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white; /* 设置文本颜色为白色 */
+        padding: 10px 20px; /* 设置按钮内边距以增加按钮的大小 */
+        border-radius: 100px; /* 设置按钮的圆角 */
+        cursor: pointer; /* 将鼠标光标样式设置为手型，表明这是一个可点击的按钮 */
+        background-image: linear-gradient(to right, #f8f3f3, #00bfff); /* 设置渐变色背景，可根据需求自定义渐变方向和颜色 */
+      }
+      .button3 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white; /* 设置文本颜色为白色 */
+        padding: 10px 20px; /* 设置按钮内边距以增加按钮的大小 */
+        border-radius: 500px; /* 设置按钮的圆角 */
+        cursor: pointer; /* 将鼠标光标样式设置为手型，表明这是一个可点击的按钮 */
+        background-image: linear-gradient(to right, #007bff, #cdde13); /* 设置渐变色背景，可根据需求自定义渐变方向和颜色 */
+      }
+      .button4 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white; /* 设置文本颜色为白色 */
+        padding: 10px 20px; /* 设置按钮内边距以增加按钮的大小 */
+        border-radius: 500px; /* 设置按钮的圆角 */
+        cursor: pointer; /* 将鼠标光标样式设置为手型，表明这是一个可点击的按钮 */
+        background-image: linear-gradient(to right, #00d5ff, #d44646); /* 设置渐变色背景，可根据需求自定义渐变方向和颜色 */
+      }
+      .button5 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white; /* 设置文本颜色为白色 */
+        padding: 10px 20px; /* 设置按钮内边距以增加按钮的大小 */
+        border: none; /* 移除按钮的边框 */
+        border-radius: 500px; /* 设置按钮的圆角 */
+        cursor: pointer; /* 将鼠标光标样式设置为手型，表明这是一个可点击的按钮 */
+        background-image: linear-gradient(to right, #f7eeee, #297ea8); /* 设置渐变色背景，可根据需求自定义渐变方向和颜色 */
+      }
+      div button {
+        display: flex;
+        justify-content: center;
+        /* justify-content: center;  */
+        align-items: center;
+        color: rgb(0, 0, 0); /* 设置文本颜色为黑色 */
+        padding: 10px 20px; /* 设置按钮内边距以增加按钮的大小 */
+        border-radius: 10px; /* 设置按钮的圆角 */
+        cursor: pointer; /* 将鼠标光标样式设置为手型，表明这是一个可点击的按钮 */
+        background-image: linear-gradient(to right, #007bff, #ff0062); /* 设置渐变色背景，可根据需求自定义渐变方向和颜色 */
+      }
+.button6 {
+  display:inline-block; /* 使用弹性布局 */
+  background: linear-gradient(to right, #00c8ff, #ecef4c); /* 设置文字背景渐变 */
+  padding: 10px 20px; /* 设置按钮内边距以增加按钮的大小 */
+  border:currentColor; /* 移除按钮的边框 */
+  color: white; /* 隐藏文字颜色 */
+  border-radius: 50%; /* 设置按钮的圆角 */
+  cursor: pointer; /* 将鼠标光标样式设置为手型，表明这是一个可点击的按钮 */
+  background-image: linear-gradient(to right, #24e024, #d1273a); /* 设置渐变色背景，可根据需求自定义渐变方向和颜色 */
+  transition: transform 0.2s ease-out; /* 定义过渡效果 */
+}
+.button6.animated {
+  transform: scale(0.85);
+}
+/* 设置表格样式 */
+table{
+  width:max-content;
+  text-align: center;
+  height:max-content;
+  top: 1%;
+  left: 33%;
+  position: fixed;
+  border-collapse:separate;
+  margin: 0 auto; /*设置表格居中显示*/
+  margin-top: 150px; /* 下方留出一些间距 */
+}
+
+/* 设置单元格样式 */
+td {
+  width: 45px; /* 单元格宽度 */
+  height: 45px; /* 单元格高度 */
+  text-align: center; /* 文本居中对齐 */
+  background-image: linear-gradient(to right, #f7eeee, #297ea8); /* 设置渐变色背景，可根据需求自定义渐变方向和颜色 */
+  border: 1px solid blue; /* 单元格边框 */
+  font-size: 30px;
+}
+/* 添加样式以突出显示挖空单元格 */
+.empty-cell {
+  width: 45px; /* 单元格宽度 */
+  height: 45px; /* 单元格高度 */
+  text-align: center; /* 文本居中对齐 */
+  border: 1px solid blue; /* 单元格边框 */
+  font-size: 30px;
+  background-color:#FFFACD; /* 设置背景颜色 */
+    }      
+/* 样式化模态框背景 */
+.modal {
+  display: none; /* 默认情况下隐藏模态框 */
+  position: fixed;
+  top: 15%;
+  left: 15%;
+  width: max-content;
+  height: max-content;
+  background-color: rgba(47, 162, 204, 0.5);  /* 设置背景颜色并添加透明度 */
+  justify-content: center;  /* 在主轴上居中对齐 */
+  align-items: center;  /* 在交叉轴上居中对齐 */
+  z-index: 1; /* 设置模态框在最上层 */
+}
+
+/* 样式化模态框内容区域 */
+.modal-content {
+  background-color: #FFFACD; /* 设置模态框内容区域背景颜色 */
+  padding: 20px;  /* 设置内边距 */
+  border-radius: 5px; /* 设置圆角 */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* 添加阴影 */
+}
+
+/* 隐藏滚动条，如果模态框内容太长 */
+body.modal-open {
+  overflow: hidden;
+}
+.highlighted {
+  background-color: lightblue;
+}
+
+

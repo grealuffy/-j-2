@@ -1,0 +1,22 @@
+.box{
+    background-image: url(./1.jpg); /*背景图片*/
+    background-repeat: no-repeat; /*背景图片不重复*/
+    background-size: cover; /*背景图片自适应*/
+    }    /* 类选择器   */
+.box1
+{
+    font-family: cursive ;/*字体*/
+    font-style: oblique; /*字体样式*/
+    width: 1024px;       /*窗口宽度*/
+    height: 700px;     /*窗口高度*/
+    margin: auto;    /*居中*/
+    top: 0;    /*居中*/
+    left: 0;    /*居中*/
+    right: 0;   /*居中*/
+    bottom: 0;  /*居中*/
+    border: px solid red;  /*边框粗细和线条颜色*/
+    padding: auto;  /*内边距*/
+    text-align:left;    /*文字居中*/
+    line-height: 50px;   /*行高*/
+    font-size: 50px;    /*字体大小*/
+}

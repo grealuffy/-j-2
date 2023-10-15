@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>游戏介绍</title>
+    <link rel="stylesheet" href="styles2.css">
+    <style>
+        @keyframes slideIn {
+          from {
+            opacity: 0;
+            transform: translateX(100%);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        .slide-in-text {
+          animation: slideIn 1s ease-in-out forwards;
+        }
+        /* body {
+                opacity: 0;
+                transition: opacity 0.8s ease-in-out;
+                }
+            body.fade-in {
+                opacity: 1;
+            }
+            body.fade-out {
+                opacity: 0;
+                } */
+        body {
+        position: absolute;
+        left: 100%;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow:hidden;
+        transition: transform 0.5s ease-in-out;
+        } */
+
+        body.slide-out-left {
+        transform: translateX(-100%);
+        }
+
+        body.slide-in-right {
+        transform: translateX(-100%);
+        }
+      </style>
+</head>
+<body class="box">
+  <audio id="audio1">
+    <source src="./洛克王国-人鱼湾.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="audio2">
+    <source src="./洛克王国2_爱给网_aigei_com.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="audio3">
+    <source src="./洛克王国3_爱给网_aigei_com.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="audio4">
+    <source src="./洛克王国配乐 - 我的家园_爱给网_aigei_com (1).mp3" type="audio/mpeg">
+  </audio>
+  <audio id="audio5">
+    <source src="./任务4_爱给网_aigei_com.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="audio6">
+    <source src="./漂浮宫殿_爱给网_aigei_com.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="audio7">
+    <source src="./帝达尔之环中区、帝达尔之环东区、许愿台，圣湖_爱给网_aigei_com.mp3" type="audio/mpeg">
+  </audio>
+    <div class="box1">
+        <br><br>
+        <p style="color: red;" class="slide-in-text">
+            九宫格是一个以3x3方格组成的游戏板，每个方格再细分为九个小格。玩家通过填写数字1-9，使每一行、每一列和每个3x3小方格内的数字都不重复。目标是在空格中正确填入数字，完成数独谜题，本款游戏将会随机生成九个九宫格(标号1~9)供玩家解谜底，相信屏幕前聪明的你一定会全部完成！
+        </p>
+        <script>
+            var audioElements = [document.getElementById("audio1"), document.getElementById("audio2"),document.getElementById("audio3"),document.getElementById("audio4"),document.getElementById("audio5"),document.getElementById("audio6"),document.getElementById("audio7")];
+var currentAudioIndex = 0;
+function playNextAudio() {
+    currentAudioIndex = (currentAudioIndex + 1) % audioElements.length;
+    if(currentAudioIndex==6)
+    {
+      audioElements[currentAudioIndex].volume = 0.35;
+      audioElements[currentAudioIndex].play();
+    audioElements[currentAudioIndex].addEventListener("ended", playNextAudio);
+    }
+    else
+    {
+      audioElements[currentAudioIndex].play();
+      audioElements[currentAudioIndex].addEventListener("ended", playNextAudio);
+    }  
+}
+audioElements[currentAudioIndex].addEventListener("ended", playNextAudio);
+audioElements[currentAudioIndex].play();
+
+            window.onload = function() {
+            document.body.classList.add('slide-in-right');
+                }
+            // 使用JavaScript为整个页面添加点击事件监听器
+            document.body.addEventListener('click', function() {
+                // 当点击事件发生时，跳转到下一个页面
+                    setTimeout(function() {
+                        window.location.href = '页面3.html';
+                    }, 500); // 等待0.5秒后进行跳转
+            });
+            // 使用setTimeout()函数设置定时器
+            setTimeout(function() 
+            {
+                // 在指定的时间后跳转到下一个页面
+                window.location.href = '页面3.html';
+            }, 4000); // 4000毫秒，即4秒钟
+        </script>
+    </div>
+</body>
+</html>

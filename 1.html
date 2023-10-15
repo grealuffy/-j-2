@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>生成九宫格随机数独题目</title>
+  <style>
+    /* 设置表格样式 */
+    table[id='mytable1'] {
+      width: auto;
+      height: auto; /*高度*/
+      top: 0;
+      left: 0;
+      position:fixed;
+      border-collapse: collapse; /* 合并表格边框 */
+      margin-bottom: 20px; /* 下方留出一些间距 */
+    }
+
+    /* 设置单元格样式 */
+    td {
+      width: 30px; /* 单元格宽度 */
+      height: 30px; /* 单元格高度 */
+      text-align: center; /* 文本居中对齐 */
+      border: 1px solid #cccccc00; /* 单元格边框 */
+      background-image: linear-gradient(to right, #f7eeee, #297ea8); /* 设置渐变色背景，可根据需求自定义渐变方向和颜色 */
+      font-size: 20px;
+    }
+    /* 添加样式以突出显示挖空单元格 */
+    .empty-cell {
+      width: 30px; /* 单元格宽度 */
+      height: 30px; /* 单元格高度 */
+      text-align: center; /* 文本居中对齐 */
+      border: 1px solid #cccccc00; /* 单元格边框 */
+      font-size: 20px;
+      background-color: #FFFACD;
+        }
+  </style>
+</head>
+<body>
+  <!-- 生成数独按钮 -->
+  <button onclick="generateSudokus()">一键并发生成9个数独题目</button>
+
+  <!-- 数独容器 -->
+  <div id="sudokuContainer"></div>
+
+  <script>
+    // 创建初始数字序列
+function createInitial() {
+      const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+      for (let i = nums.length - 1; i >= 0; i--) {
+        // Fisher–Yates 洗牌算法
+        const randomIndex = Math.floor(Math.random() * (i + 1));
+        [nums[i], nums[randomIndex]] = [nums[randomIndex], nums[i]]; // 随机打乱数字序列
+      }
+
+      return nums; // 返回打乱后的初始数字序列
+    }
+    // 生成数独题目
+    function createPuzzle() {
+      const initial = createInitial(); // 生成初始数字序列
+      const puzzle = [];
+
+      for (let i = 0; i < 9; i++) {
+        const row = [];
+
+        for (let j = 0; j < 9; j++) {
+          row.push(initial[(i * 3 + Math.floor(i / 3) + j) % 9]); // 根据初始数字序列生成数独题目
+        }
+
+        puzzle.push(row); // 将行添加到数独题目中
+      }
+      return puzzle; // 返回生成的数独题目
+    }
+    // 创建一个数独表格
+    function createSudokuTable() {
+      const table = document.createElement('table'); // 创建表格元素
+      const puzzle = createPuzzle(); // 生成数独题目
+      for (let i = 0; i < 9; i++) {
+        const row = document.createElement('tr'); // 创建表格行
+        for (let j = 0; j < 9; j++) {
+          const cell = document.createElement('td'); // 创建单元格
+          if(Math.random()<0.6)
+          {
+            cell.textContent = puzzle[i][j]; // 设置单元格文本内容为数独数字
+            row.appendChild(cell); // 将单元格添加到行中
+          }
+          else
+          {
+            const input = document.createElement('input');
+            // cell.classList.add('empty-cell'); // 添加样式以突出显示挖空单元格
+            input.classList.add('empty-cell');
+            input.type = 'number';
+            input.maxLength = '1';
+            input.addEventListener('input', validateInput); // 添加事件监听器以验证输入内容
+            cell.appendChild(input);
+            row.appendChild(cell); // 将单元格添加到行中
+          }
+        }
+        table.appendChild(row); // 将行添加到表格中
+      }
+
+      return table; // 返回创建好的表格
+    }
+    // 验证输入内容是否合法，只能输入1到9的数字
+    function validateInput(event) {
+      const input = event.target;
+      const num = parseInt(input.value);
+
+      if (isNaN(num) || num < 1 || num > 9) {
+        input.value = ''; // 清空输入内容
+      }
+    }
+    // 生成数独题目的主函数
+    function generateSudokus() {
+      const container = document.getElementById('sudokuContainer');
+      container.innerHTML = ''; // 清空容器
+        const table = createSudokuTable(); // 创建数独表格
+        container.appendChild(table); // 将表格添加到容器中
+    }
+    // 并发生成9个九宫格数独
+function generateSudokuGridsConcurrently() {
+    const gridIds = ['grid1', 'grid2', 'grid3', 'grid4', 'grid5', 'grid6', 'grid7', 'grid8', 'grid9'];
+
+    // 使用Promise.all来并发生成并填充9个不同的九宫格数独
+    Promise.all(gridIds.map(async (gridId) => {
+        const sudoku = generateRandomSudoku();
+        return fillSudokuGrid(gridId, sudoku);
+    }))
+        .then(() => {
+            console.log("9个不同的九宫格数独生成完成");
+        })
+        .catch((error) => {
+            console.error("生成九宫格数独时发生错误", error);
+        });
+}
+
+// 在页面加载完成后调用并发生成函数
+window.onload = generateSudokuGridsConcurrently;
+  </script>
+</body>
+</html>

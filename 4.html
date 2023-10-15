@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>生成九宫格随机数独题目</title>
+  <style>
+    /* 设置表格样式 */
+    table[id='mytable1'] {
+      width: auto;
+      height: auto; /*高度*/
+      top: 0;
+      left: 0;
+      position:fixed;
+      border-collapse: collapse; /* 合并表格边框 */
+      margin-bottom: 20px; /* 下方留出一些间距 */
+    }
+
+    /* 设置单元格样式 */
+    td {
+      width: 30px; /* 单元格宽度 */
+      height: 30px; /* 单元格高度 */
+      text-align: center; /* 文本居中对齐 */
+      border: 1px solid #cccccc00; /* 单元格边框 */
+      background-image: linear-gradient(to right, #f7eeee, #297ea8); /* 设置渐变色背景，可根据需求自定义渐变方向和颜色 */
+      font-size: 20px;
+    }
+    /* 添加样式以突出显示挖空单元格 */
+    .empty-cell {
+      width: 30px; /* 单元格宽度 */
+      height: 30px; /* 单元格高度 */
+      text-align: center; /* 文本居中对齐 */
+      border: 1px solid #cccccc00; /* 单元格边框 */
+      font-size: 20px;
+      background-color: #FFFACD;
+        }
+  </style>
+</head>
+<body>
+  <!-- 生成数独按钮 -->
+  <button onclick="generateSudokuGridsConcurrently()">一键并发生成9个数独题目</button>
+
+  <!-- 数独容器 -->
+<div id="grid1"></div>
+<div id="grid2"></div>
+<div id="grid3"></div>
+<div id="grid4"></div>
+<div id="grid5"></div>
+<div id="grid6"></div>
+<div id="grid7"></div>
+<div id="grid8"></div>
+<div id="grid9"></div>
+
+  <script src="./sudoku.js"></script>
+</body>
+</html>

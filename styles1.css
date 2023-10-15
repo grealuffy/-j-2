@@ -1,0 +1,55 @@
+.box0{
+    background-image: url(./1.jpg); /*背景图片*/
+    background-repeat: no-repeat; /*背景图片不重复*/
+    background-size: cover; /*背景图片自适应*/
+}
+.box{
+    font-family: cursive ;/*字体*/
+    font-style: oblique; /*字体样式*/
+    width: 100%;       /*窗口宽度*/
+    height: 700px;     /*窗口高度*/
+    margin: auto;    /*居中*/
+    top: 0;    /*居中*/
+    left: 0;    /*居中*/
+    right: 0;   /*居中*/
+    bottom: 0;  /*居中*/
+    border: 0px solid red;  /*边框粗细和线条颜色*/
+    padding: auto;  /*内边距*/
+    text-align: center;    /*文字居中*/
+    line-height: 70px;   /*行高*/
+    font-size: 32px;    /*字体大小*/
+    }    /* 类选择器   */
+.myp{
+    color: blue;    /*字体颜色*/
+    }   /* 类选择器   */
+#myp0{
+    color: red;     /*字体颜色*/
+    }   /* ID选择器   */
+a[title="666"]
+{
+    color: orange;     /*字体颜色*/
+    }   /* 属性选择器   */
+h2{
+    color: rgb(240, 168, 23)!important;     /*字体颜色*/
+    }   /* 标签（标签）选择器   */
+div button{
+    color: aquamarine;     /*字体颜色*/
+    font-size: 30px;     /*字体大小*/
+    }   /* (在子标签内进行选择)后代选择器   */
+@keyframes slide-in {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+    }
+    
+    .text-animation {
+    animation: slide-in 1s ease-out;
+    }
+    /* 注释：后代选择器（div button）会选择所有 <div> 元素内部的 <button> 元素，不管它出现在 <div> 之下的任何位置。 */
+/* 同一优先级以最新的最后面定义的为主 */
+/* 选择器的优先级：内联样式 > ID选择器 > 类选择器 > 标签选择器 */
+/* 继承下来的样式优先级永远低于指定的样式 */
+/* 内联样式优先级最高，除非在外部样式后加!important */

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数独题目</title>
+    <link rel="stylesheet" href="styles4.css">
+    <!-- <script src="./solve.js"></script> -->
+</head>
+<body class="box">
+  <div id="background-image-element"></div>
+  <audio id="audio6">
+    <source src="./洛克王国-人鱼湾.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="audio7">
+    <source src="./洛克王国2_爱给网_aigei_com.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="audio3">
+    <source src="./洛克王国3_爱给网_aigei_com.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="audio4">
+    <source src="./洛克王国配乐 - 我的家园_爱给网_aigei_com (1).mp3" type="audio/mpeg">
+  </audio>
+  <audio id="audio5">
+    <source src="./任务4_爱给网_aigei_com.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="audio2">
+    <source src="./漂浮宫殿_爱给网_aigei_com.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="audio1">
+    <source src="./帝达尔之环中区、帝达尔之环东区、许愿台，圣湖_爱给网_aigei_com.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="audio8">
+    <source src="./星之所在_爱给网_aigei_com (1).mp3" type="audio/mpeg">
+  </audio>
+  <audio id="audio9">
+    <source src="./星之所在_爱给网_aigei_com.mp3" type="audio/mpeg">
+  </audio>
+<p style="position: absolute; top: 60px; left:10px;">游戏已运行：<span id="runtime"></span></p>
+<h1 style="position: absolute; top: 0px; left:10px;">当前为简单模式</h1>
+<button id="solveButton" onclick="SolvedSudokus()" style="position: absolute; top: 300px; left:10px;width:180px; height: 60px;
+font-size: 13px;background-image: linear-gradient(to right, #f9f94c, #ff3d0c);cursor: pointer;">一键并发解决所有数独</button>
+<img src="./图（8）.png" alt="图片不存在" style="height: 500px;width: 380px;position: absolute;left:750px; top: -40px;;">
+<button class="button2" onclick="fun1()" style="position: absolute; top: 650px; left: 50px;width:200px; height: 50px;
+font-size: 26px;">一键检查</button>
+<button class="button3" onclick="fun2()" style="position: absolute; top: 650px; left:1050px;width:200px; height: 50px;
+font-size: 26px;">点击提示</button>
+<button onclick="generateSudokuGridsConcurrently()" class="button4"    style="position: absolute; top: 650px; left:1320px;width:150px; height: 50px;
+font-size: 26px;">重新生成</button>
+<button id="puzzle1" class="button5" style="position: absolute; top: 50px; left: 45%;width:150px; height: 50px;font-size: 26px;">第1题</button>
+<button id="puzzle2" class="button5" style="position: absolute; top: 50px; left: 45%;width:150px; height: 50px;font-size: 26px;">第2题</button>
+<button id="puzzle3" class="button5" style="position: absolute; top: 50px; left: 45%;width:150px; height: 50px;font-size: 26px;">第3题</button>
+<button id="puzzle4" class="button5" style="position: absolute; top: 50px; left: 45%;width:150px; height: 50px;font-size: 26px;">第4题</button>
+<button id="puzzle5" class="button5" style="position: absolute; top: 50px; left: 45%;width:150px; height: 50px;font-size: 26px;">第5题</button>
+<button id="puzzle6" class="button5" style="position: absolute; top: 50px; left: 45%;width:150px; height: 50px;font-size: 26px;">第6题</button>
+<button id="puzzle7" class="button5" style="position: absolute; top: 50px; left: 45%;width:150px; height: 50px;font-size: 26px;">第7题</button>
+<button id="puzzle8" class="button5" style="position: absolute; top: 50px; left: 45%;width:150px; height: 50px;font-size: 26px;">第8题</button>
+<button id="puzzle9" class="button5" style="position: absolute; top: 50px; left: 45%;width:150px; height: 50px;font-size: 26px;">第9题</button>
+<button class="button1" onclick="fun0()" style="position: absolute; top: 350px; left:1340px;width:100px; height: 100px;
+font-size: 26px;">一键解题</button>
+<button class="button6"  style="position: absolute; top: 450px; left: 50px;width:150px; height: 150px;
+font-size: 26px;">提交所有题目</button>
+<button id="openModalBtn" style="position: absolute; top: 180px; left:10px;width:120px; height: 40px;
+font-size: 13px;background-image: linear-gradient(to right, #f7eeee, #297ea8);cursor: pointer;">点我查看功能说明</button>
+<div id="codeModal" class="modal">
+  <div class="modal-content">
+    <h2>功能说明</h2>
+    <textarea id="codeTextarea" rows="10" cols="50" readonly></textarea>    
+    <br>
+    <button id="closeModalBtn">关闭</button>
+  </div>
+</div>
+ <div id="execution-time"></div>
+<div>
+    <button id="button1" onclick="mytable1()" style="position: absolute; margin: auto; top: 50px; left: 1200px;width:50px; height: 50px;
+    font-size: 26px;">1</button>
+    <button id="button2" onclick="mytable2()" style="position: absolute; margin: auto; top: 50px; left: 1250px;width:50px; height: 50px;
+    font-size: 26px;">2</button>
+    <button id="button3" onclick="mytable3()" style="position: absolute; margin: auto; top: 50px; left: 1300px;width:50px; height: 50px;
+    font-size: 26px;">3</button>
+    <button id="button4" onclick="mytable4()" style="position: absolute; margin: auto; top: 100px; left: 1200px;width:50px; height: 50px;
+    font-size: 26px;">4</button>
+    <button id="button5" onclick="mytable5()" style="position: absolute; margin: auto; top: 100px; left: 1250px;width:50px; height: 50px;
+    font-size: 26px;">5</button>
+    <button id="button6" onclick="mytable6()" style="position: absolute; margin: auto; top: 100px; left: 1300px;width:50px; height: 50px;
+    font-size: 26px;">6</button>
+    <button id="button7" onclick="mytable7()" style="position: absolute; margin: auto; top: 150px; left: 1200px;width:50px; height: 50px;
+    font-size: 26px;">7</button>
+    <button id="button8" onclick="mytable8()" style="position: absolute; margin: auto; top: 150px; left: 1250px;width:50px; height: 50px;
+    font-size: 26px;">8</button>
+    <button id="button9" onclick="mytable9()" style="position: absolute; margin: auto; top: 150px; left: 1300px;width:50px; height: 50px;
+    font-size: 26px;">9</button>
+</div>
+ <!-- 数独容器 -->
+ <div id="sudokuContainer"></div>
+ <script src="sudoku_easy.js"></script>
+</body>
+</html>

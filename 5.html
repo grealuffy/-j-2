@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>生成九宫格随机数独题目</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    td {
+      width: 30px;
+      height: 30px;
+      text-align: center;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <button onclick="generateSudokus()">一键并发生成9个数独题目</button>
+
+  <div id="sudokuContainer"></div>
+
+  <script>
+    // 生成9个数独题目并显示在页面上
+    function generateSudokus() {
+      const container = document.getElementById('sudokuContainer');
+      container.innerHTML = '';
+
+      for (let i = 1; i <= 9; i++) {
+        const table = createSudokuTable();
+        const solveButton = document.createElement('button');
+        solveButton.textContent = '解题';
+        solveButton.addEventListener('click', () => solveSudoku(table));
+        container.appendChild(table);
+        container.appendChild(solveButton);
+      }
+    }
+
+    // 创建一个数独表格
+    function createSudokuTable() {
+      const table = document.createElement('table');
+      const puzzle = createPuzzle();
+
+      for (let i = 0; i < 9; i++) {
+        const row = document.createElement('tr');
+        for (let j = 0; j < 9; j++) {
+          const cell = document.createElement('td');
+          const input = document.createElement('input');
+          input.type = 'text';
+          input.maxLength = '1';
+          input.addEventListener('input', validateInput); // 添加事件监听器以验证输入内容
+          cell.appendChild(input);
+          row.appendChild(cell);
+        }
+        table.appendChild(row);
+      }
+
+      return table;
+    }
+
+    // 验证输入内容是否合法，只能输入1到9的数字
+    function validateInput(event) {
+      const input = event.target;
+      const num = parseInt(input.value);
+
+      if (isNaN(num) || num < 1 || num > 9) {
+        input.value = ''; // 清空输入内容
+      }
+    }
+
+    // 解数独题目
+    function solveSudoku(table) {
+      const rows = table.querySelectorAll('tr');
+      rows.forEach((row, rowIndex) => {
+        const cells = row.querySelectorAll('td');
+        cells.forEach((cell, columnIndex) => {
+          const input = cell.querySelector('input');
+          if (!input.value) {
+            input.value = puzzle[rowIndex][columnIndex];
+            input.disabled = true;
+            input.style.backgroundColor = '#f7f7f7';
+          }
+        });
+      });
+    }
+
+    // 创建数独题目
+    function createPuzzle() {
+      // 生成随机的1到9的数组
+      function generateRandomArray() {
+        const array = [];
+        for (let i = 1; i <= 9; i++) {
+          array.push(i);
+        }
+        array.sort(() => Math.random() - 0.5);
+        return array;
+      }
+
+      // 根据已填充的格子生成完整的数独
+      function fillSudoku(grid) {
+        const numbers = generateRandomArray();
+        for (let row = 0; row < 9; row++) {
+          for (let col = 0; col < 9; col++) {
+            if (grid[row][col] === 0) {
+              for (let number of numbers) {
+                if (isValidPlacement(grid, row, col, number)) {
+                  grid[row][col] = number;
+                  if (isSudokuSolved(grid)) {
+                    return true;
+                  } else {
+                    if (fillSudoku(grid)) {
+                      return true;
+                    }
+                  }
+                }
+              }
+              grid[row][col] = 0;
+              return false;
+            }
+          }
+        }
+        return true;
+      }
+
+      // 检查数独是否已经解答完毕
+      function isSudokuSolved(grid) {
+        for (let row = 0; row < 9; row++) {
+          for (let col = 0; col < 9; col++) {
+            if (grid[row][col] === 0) {
+              return false;
+            }
+          }
+        }
+        return true;
+      }
+
+      // 检查某个数字是否可以放置在指定位置
+      function isValidPlacement(grid, row, col, number) {
+        for (let i = 0; i < 9; i++) {
+          if (grid[row][i] === number || grid[i][col] === number) {
+            return false;
+          }
+        }
+
+        const rowOffset = Math.floor(row / 3) * 3;
+        const colOffset = Math.floor(col / 3) * 3;
+        for (let i = 0; i < 3; i++) {
+          for (let j = 0; j < 3; j++) {
+            if (grid[rowOffset + i][colOffset + j] === number) {
+              return false;
+            }
+          }
+        }
+        
+        return true;
+      }
+
+      // 创建一个空的数独表格
+      const grid = [];
+      for (let i = 0; i < 9; i++) {
+        grid.push([]);
+        for (let j = 0; j < 9; j++) {
+          grid[i].push(0);
+        }
+      }
+
+      // 填充数独
+      fillSudoku(grid);
+
+      return grid;
+    }
+  </script>
+</body>
+</html>

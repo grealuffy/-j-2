@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>多个背景音乐</title>
+</head>
+<body>
+  <audio id="audio1">
+    <source src="https://home.aigei.com:8443/0-r15/GeiFileLocalStore/b61/src/aud/mp3/10/10b9e4d05db146e99dad6e5e259d7668.mp3?download/%E6%B4%9B%E5%85%8B%E7%8E%8B%E5%9B%BD%E9%85%8D%E4%B9%90+-+%E6%88%91%E7%9A%84%E5%AE%B6%E5%9B%AD_%E7%88%B1%E7%BB%99%E7%BD%91_aigei_com.mp3&e=1695859620&token=P7S2Xpzfz11vAkASLTkfHN7Fw-oOZBecqeJaxypL:u_Xnojpgt6fYv5UxX93W-xanFIo=" type="audio/mpeg">
+  </audio>
+  <audio id="audio2">
+    <source src="https://home.aigei.com:8443/0-r14/GeiFileLocalStore/b631/src/aud/mp3/8a/8a50b6899a1443e59b17edf2eab54c1b.mp3?download/%E6%B4%9B%E5%85%8B%E7%8E%8B%E5%9B%BD1_%E7%88%B1%E7%BB%99%E7%BD%91_aigei_com.mp3&e=1695859140&token=P7S2Xpzfz11vAkASLTkfHN7Fw-oOZBecqeJaxypL:6-RnPE2ukO7zW_3N5I8AjCsJ2vg=" type="audio/mpeg">
+  </audio>
+  
+  <script>
+    var audioElements = [document.getElementById("audio1"), document.getElementById("audio2")];
+    var currentAudioIndex = 0;
+    
+    function playNextAudio() {
+      audioElements[currentAudioIndex].pause();
+      currentAudioIndex = (currentAudioIndex + 1) % audioElements.length;
+      audioElements[currentAudioIndex].play();
+    }
+    
+    audioElements[currentAudioIndex].addEventListener("ended", playNextAudio);
+    audioElements[currentAudioIndex].play();
+  </script>
+</body>
+</html>
+<!-- <audio id="audio1">
+    <source src="https://home.aigei.com:8443/0-r14/GeiFileLocalStore/b631/src/aud/mp3/8a/8a50b6899a1443e59b17edf2eab54c1b.mp3?download/%E6%B4%9B%E5%85%8B%E7%8E%8B%E5%9B%BD1_%E7%88%B1%E7%BB%99%E7%BD%91_aigei_com.mp3&e=1695859140&token=P7S2Xpzfz11vAkASLTkfHN7Fw-oOZBecqeJaxypL:6-RnPE2ukO7zW_3N5I8AjCsJ2vg=" type="audio/mpeg">
+  </audio>
+  <audio id="audio2">
+    <source src="https://home.aigei.com:8443/0-r14/GeiFileLocalStore/b631/src/aud/mp3/75/75a60df897cf4da295905c8c6ed93fc1.mp3?download/%E6%B4%9B%E5%85%8B%E7%8E%8B%E5%9B%BD2_%E7%88%B1%E7%BB%99%E7%BD%91_aigei_com.mp3&e=1695859800&token=P7S2Xpzfz11vAkASLTkfHN7Fw-oOZBecqeJaxypL:JSQhv1bq6t3GVRkrJpqGLdAvJZk=" type="audio/mpeg">
+  </audio>
+  <audio id="audio3">
+    <source src="https://home.aigei.com:8443/0-r15/GeiFileLocalStore/b61/src/aud/mp3/10/10b9e4d05db146e99dad6e5e259d7668.mp3?download/%E6%B4%9B%E5%85%8B%E7%8E%8B%E5%9B%BD%E9%85%8D%E4%B9%90+-+%E6%88%91%E7%9A%84%E5%AE%B6%E5%9B%AD_%E7%88%B1%E7%BB%99%E7%BD%91_aigei_com.mp3&e=1695859620&token=P7S2Xpzfz11vAkASLTkfHN7Fw-oOZBecqeJaxypL:u_Xnojpgt6fYv5UxX93W-xanFIo=" type="audio/mpeg">
+  </audio>
+  <audio id="audio4">
+    <source src="https://home.aigei.com:8443/0-r14/GeiFileLocalStore/b63/src/aud/mp3/f7/f7a34a42644a4a578c3e140b1b7c154f.mp3?download/%E6%B4%9B%E5%85%8B%E7%8E%8B%E5%9B%BD3_%E7%88%B1%E7%BB%99%E7%BD%91_aigei_com.mp3&e=1695860280&token=P7S2Xpzfz11vAkASLTkfHN7Fw-oOZBecqeJaxypL:KfUj7yml6DxLuXV-t7PT1tLQ360=" type="audio/mpeg">
+  </audio>
+  <audio id="audio5">
+    <source src="https://home.aigei.com:8443/0-r16/GeiFileLocalStore/b63/src/aud/mp3/36/36415c6e82f64e938e090ce650eaffd5.mp3?download/%E4%BB%BB%E5%8A%A14_%E7%88%B1%E7%BB%99%E7%BD%91_aigei_com.mp3&e=1695861780&token=P7S2Xpzfz11vAkASLTkfHN7Fw-oOZBecqeJaxypL:BRjdEuLk80KZcwKTxzcxUToqH-g=" type="audio/mpeg">
+  </audio>
+  <audio id="audio6">
+    <source src="https://s1.aigei.com/src/aud/mp3/77/7727bbe0be764ee79e3c036985aa6537.mp3?download/%E6%BC%82%E6%B5%AE%E5%AE%AB%E6%AE%BF_%E7%88%B1%E7%BB%99%E7%BD%91_aigei_com.mp3&e=1695862140&token=P7S2Xpzfz11vAkASLTkfHN7Fw-oOZBecqeJaxypL:LXQ4wnJwTdHesdsZTySL-dW6lSs=" type="audio/mpeg">
+  </audio>
+  <audio id="audio7">
+    <source src="https://s1.aigei.com/src/aud/mp3/63/63e6499896b146ff82752ce326fb48dc.mp3?download/%E5%B8%9D%E8%BE%BE%E5%B0%94%E4%B9%8B%E7%8E%AF%E4%B8%AD%E5%8C%BA%E3%80%81%E5%B8%9D%E8%BE%BE%E5%B0%94%E4%B9%8B%E7%8E%AF%E4%B8%9C%E5%8C%BA%E3%80%81%E8%AE%B8%E6%84%BF%E5%8F%B0%EF%BC%8C%E5%9C%A3%E6%B9%96_%E7%88%B1%E7%BB%99%E7%BD%91_aigei_com.mp3&e=1695862380&token=P7S2Xpzfz11vAkASLTkfHN7Fw-oOZBecqeJaxypL:nAHBIi0v6lw6xv0tDKaQCFIViC4=" type="audio/mpeg">
+  </audio>
+  <audio id="audio8">
+    <source src="https://home.aigei.com:8443/0-r16/GeiFileLocalStore/b631/src/aud/mp3/e4/e4f8f87f35e2473088f0938af4583d3b.mp3?download/%E6%98%9F%E4%B9%8B%E6%89%80%E5%9C%A8_%E7%88%B1%E7%BB%99%E7%BD%91_aigei_com.mp3&e=1695860940&token=P7S2Xpzfz11vAkASLTkfHN7Fw-oOZBecqeJaxypL:awIRJ1T73phf6NZ6DbwZ-fc-PTo=" type="audio/mpeg">
+  </audio>
+  <audio id="audio9">
+    <source src="https://home.aigei.com:8443/0-r16/GeiFileLocalStore/b631/src/aud/mp3/b8/b8828cc333dc4af896958bab5ff74451.mp3?download/%E6%98%9F%E4%B9%8B%E6%89%80%E5%9C%A8_%E7%88%B1%E7%BB%99%E7%BD%91_aigei_com.mp3&e=1695861120&token=P7S2Xpzfz11vAkASLTkfHN7Fw-oOZBecqeJaxypL:lWpvBejVIs8v-LzwZ6lypNLSWxQ=" type="audio/mpeg">
+  </audio>
+  <script src="./common.js"></script>
+var audioElements = [document.getElementById("audio1"), document.getElementById("audio2"),document.getElementById("audio3"),document.getElementById("audio4"),document.getElementById("audio5"),document.getElementById("audio6"),document.getElementById("audio7"),document.getElementById("audio8"),document.getElementById("audio9")];
+var currentAudioIndex = 0;
+function playNextAudio() {
+    audioElements[currentAudioIndex].pause();
+    currentAudioIndex = (currentAudioIndex + 1) % audioElements.length;
+    audioElements[currentAudioIndex].play();
+}
+audioElements[currentAudioIndex].addEventListener("ended", playNextAudio);
+audioElements[currentAudioIndex].play(); -->
